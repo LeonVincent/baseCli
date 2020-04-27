@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -17,18 +18,33 @@ module.exports = {
       {
         test: /.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
       {
         test: /.less$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               modules: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')
+              ]
+            }
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 75,// 750设计稿
+              remPrecision: 8
             }
           },
           'less-loader'
@@ -47,10 +63,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name]_[contenthash:8].css'
     })
   ],
   devServer: {
     port: 9000
   },
-  devtool: 'source-map'
+  // devtool: 'source-map'
 }
