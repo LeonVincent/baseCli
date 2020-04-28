@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
       "jsx": "react",
-      "jsx": "react",
       "module": "commonjs",
       "target": "es5",
       "sourceMap": true,
       "allowJs": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "moduleResolution": "node"
   },
   "experimentalDecorators": true,
   "include": [

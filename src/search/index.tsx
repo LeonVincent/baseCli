@@ -1,6 +1,11 @@
+// import styles from './search.module.less'
+// import img from './../images/1.png'
+// console.log(styles)
+
 import React, { PureComponent } from 'react'
 import ReactDom from 'react-dom'
-import Search from './search.jsx'
+// import img from './../images/1.png'
+// import Search from '../search/index.jsx'
 type Props = {
   num: number
 }
@@ -13,12 +18,11 @@ class App extends PureComponent<Props, State> {
     super(props)
   }
   render() {
-    const a: number = 3
-    return(
+    return (
       <div>
+        {'Search Text'}
         <div>
-
-        <Search />
+          {/* <img src={img} /> */}
         </div>
       </div>
     )
@@ -27,5 +31,5 @@ class App extends PureComponent<Props, State> {
 
 ReactDom.render(
   <App num={1} />,
-  document.getElementById('root')
+  document.getElementById('root1')
 )

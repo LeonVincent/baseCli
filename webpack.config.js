@@ -1,9 +1,16 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const glob = require('glob')
+const setMPA = require('./webpack.entry.js')
+console.log(setMPA)
+const { entry, htmlWebPackPlugins } = setMPA()
+console.log('entry', entry)
+console.log(htmlWebPackPlugins)
 module.exports = {
-  entry: './src/index.tsx',
+  // entry: './src/index.tsx',
+  entry: entry,
   output: {
     filename: 'bundle:[chunkhash:6].js',
     path: path.resolve(__dirname , './dist')
@@ -66,8 +73,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name]_[contenthash:8].css'
-    })
-  ],
+    }),
+    new CleanWebpackPlugin()
+
+  ].concat(htmlWebPackPlugins),
   devServer: {
     port: 9000
   },
