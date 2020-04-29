@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react'
 import ReactDom from 'react-dom'
 // import Search from '../search/index.jsx'
-import styles from './../search.module.less'
+
+// @ts-ignore
+import styles from './search.module.less'
+// @ts-ignore
 import img from './../images/1.png'
 // const img = require('./../images/1.png').default
 type Props = {
@@ -19,7 +22,7 @@ class App extends PureComponent<Props, State> {
     const a: number = 3
     return(
       <div>
-        <div>
+        <div className={styles.txt}>
           {'index.html'}
           <img src={img} />
         {/* <Search /> */}
