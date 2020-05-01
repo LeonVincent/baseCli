@@ -2,18 +2,19 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const setMPA = require('./webpack.entry.js')
-console.log(setMPA)
 const { entry, htmlWebPackPlugins } = setMPA()
-console.log('entry', entry)
-console.log(htmlWebPackPlugins)
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const webpack = require('webpack')
 module.exports = {
   entry: entry,
   output: {
-    filename: '[name]:[chunkhash:6].js',
+    filename: '[name]:[hash:6].js',
     path: path.resolve(__dirname , './dist')
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -72,11 +73,76 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name]_[contenthash:8].css'
     }),
-    new CleanWebpackPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
+    function() {
+      this.hooks.done.tap('done', (stats) => {
+        if (stats.compilation.errors) {
+          console.log('errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
+          // process.exit(66)
+        } else {
+          console.log('doneeeeeeeeeeeeeeeeeeeeeeee')
+          // process.exit(0)
+        }
+      })
+    },
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'react',
+          entry: 'https://unpkg.com/browse/react@16.13.1/umd/react.production.min.js',
+          global: 'React',
+        },
+        {
+          module: 'react-dom',
+          entry: 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+          global: 'ReactDOM',
+        },
+      ],
+    })
 
   ].concat(htmlWebPackPlugins),
   devServer: {
-    port: 9000
+    port: 9000,
+    stats: 'errors-only'
   },
-  // devtool: 'source-map'
+  resolve: {
+    modules: [ path.resolve('node_modules') ],
+    extensions: ['.js', '.jsx', '.tsx', '.css', '.json', '.ts']
+  },
+  devtool: 'cheap-module-eval-source-map',
+  // optimization: {
+  //   splitChunks: {
+  //     // minSize: 30000,
+  //     // maxSize: 0,
+  //     cacheGroups: {
+  //       commons: {
+  //         test: /(react|react-dom)/,
+  //         name: 'hahaReact',
+  //         chunks: 'all'
+  //       }
+  //     }
+
+  //   }
+  // }
+
+  optimization: {
+    minimizer: [
+      // new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    splitChunks: {
+      minSize: 0,
+      maxSize: 0,
+      cacheGroups: {
+        commons: {
+          name: 'commonsLeon',
+          chunks: 'all',
+          minChunks: 1
+        }
+      }
+
+    }
+  }
 }

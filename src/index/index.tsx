@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom'
 // import Search from '../search/index.jsx'
 
-// @ts-ignore
+import { module } from './../common/common'
+
 import styles from './search.module.less'
-// @ts-ignore
 import img from './../images/1.png'
 // const img = require('./../images/1.png').default
 type Props = {
@@ -19,11 +19,12 @@ class App extends PureComponent<Props, State> {
     super(props)
   }
   render() {
+    // console.log(a)
     const a: number = 3
     return(
       <div>
         <div className={styles.txt}>
-          {'index.html'}
+          {'index.html hengheng heng lllhhhhhhh hh'} { module() }
           <img src={img} />
         {/* <Search /> */}
         </div>
@@ -32,7 +33,7 @@ class App extends PureComponent<Props, State> {
   }
 }
 
-ReactDom.render(
+ReactDOM.render(
   <App num={1} />,
   document.getElementById('root')
 )

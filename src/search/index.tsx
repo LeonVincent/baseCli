@@ -3,7 +3,8 @@
 // console.log(styles)
 
 import React, { PureComponent } from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom'
+import { module } from './../common/common'
 // import img from './../images/1.png'
 // import Search from '../search/index.jsx'
 type Props = {
@@ -20,7 +21,7 @@ class App extends PureComponent<Props, State> {
   render() {
     return (
       <div>
-        {'Search Text'}
+        {'Search Text'} { module() }
         <div>
           {/* <img src={img} /> */}
         </div>
@@ -29,7 +30,7 @@ class App extends PureComponent<Props, State> {
   }
 }
 
-ReactDom.render(
+ReactDOM.render(
   <App num={1} />,
   document.getElementById('root1')
 )

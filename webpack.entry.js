@@ -7,7 +7,7 @@ function setMPA() {
   const entry = {}
   const htmlWebPackPlugins = []
   const entryFiles = glob.sync(path.join(projectRoot, '/src/*/index.*'))
-  console.log(entryFiles)
+  // console.log(entryFiles)
   Object.keys(entryFiles).map((index) => {
     const entryFile = entryFiles[index]
     const match = entryFile.match(/src\/(.*)\/index\.*/)
@@ -18,7 +18,7 @@ function setMPA() {
         inlineSource: '.css$',
         template: path.join(projectRoot, `./src/${pageName}/index.html`),
         filename: `${pageName}.html`,
-        chunks: ['vendors', pageName],
+        chunks: ['hahaReact', pageName],
         inject: true,
         minify: {
           html5: true,
