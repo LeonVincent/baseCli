@@ -6,30 +6,24 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const setMPA = require('./webpack.entry.js')
 const { entry, htmlWebPackPlugins } = setMPA()
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const webpack = require('webpack')
 module.exports = {
   entry: entry,
   output: {
     filename: '[name]:[hash:6].js',
-    path: path.resolve(__dirname , './dist')
+    path: path.resolve(__dirname, './dist')
   },
   mode: 'production',
   module: {
     rules: [
       {
         test: /.(js|jsx)$/,
-        use: [
-          'babel-loader',
-          'eslint-loader'
-        ]
+        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /.less$/,
@@ -44,15 +38,13 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                require('autoprefixer')
-              ]
+              plugins: [require('autoprefixer')]
             }
           },
           {
             loader: 'px2rem-loader',
             options: {
-              remUnit: 75,// 750设计稿
+              remUnit: 75, // 750设计稿
               remPrecision: 8
             }
           },
@@ -79,7 +71,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
-    function() {
+    function () {
       this.hooks.done.tap('done', (stats) => {
         if (stats.compilation.errors) {
           console.log('errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
@@ -94,24 +86,25 @@ module.exports = {
       externals: [
         {
           module: 'react',
-          entry: 'https://unpkg.com/browse/react@16.13.1/umd/react.production.min.js',
-          global: 'React',
+          entry:
+            'https://unpkg.com/browse/react@16.13.1/umd/react.production.min.js',
+          global: 'React'
         },
         {
           module: 'react-dom',
-          entry: 'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
-          global: 'ReactDOM',
-        },
-      ],
+          entry:
+            'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+          global: 'ReactDOM'
+        }
+      ]
     })
-
   ].concat(htmlWebPackPlugins),
   devServer: {
     port: 9000,
     stats: 'errors-only'
   },
   resolve: {
-    modules: [ path.resolve('node_modules') ],
+    modules: [path.resolve('node_modules')],
     extensions: ['.js', '.jsx', '.tsx', '.css', '.json', '.ts']
   },
   devtool: 'cheap-module-eval-source-map',
@@ -145,7 +138,6 @@ module.exports = {
           minChunks: 1
         }
       }
-
     }
   }
 }
