@@ -49,6 +49,12 @@
     "dev": "webpack-dev-server --open",
     "precommit": "lint-staged"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run precommit-msg && lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
   "lint-staged": {
     "src/**/*.{js,json,css,jsx,ts,tsx}": [
       "prettier --write",

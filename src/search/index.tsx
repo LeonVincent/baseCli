@@ -22,8 +22,7 @@ class App extends PureComponent<Props, State> {
     return (
       <div>
         {'Search Text'} {module()}
-        <div>{/* <img src={img} /> */}
-        </div>
+        <div>{/* <img src={img} /> */}</div>
       </div>
     )
   }
