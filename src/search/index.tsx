@@ -22,15 +22,11 @@ class App extends PureComponent<Props, State> {
     return (
       <div>
         {'Search Text'} {module()}
-        <div>
-          {/* <img src={img} /> */}
+        <div>{/* <img src={img} /> */}
         </div>
       </div>
     )
   }
 }
 
-ReactDOM.render(
-  <App num={1} />,
-  document.getElementById('root1')
-)
+ReactDOM.render(<App num={1} />, document.getElementById('root1'))
