@@ -7,7 +7,11 @@ import { module } from './../common/common'
 import styles from './search.module.less'
 // import img from './../images/1.png'
 // const img = require('./../images/1.png').default
-type Props = {
+// type Props = {
+//   num: number
+// }
+
+interface Props {
   num: number
 }
 
@@ -16,42 +20,36 @@ type State = {
   imgsrc: string
 }
 class App extends PureComponent<Props, State> {
-  constructor(props) {
+  constructor(props: Readonly<Props>) {
     super(props)
     this.state = {
-      imgsrc: '',
+      imgsrc: 'sas',
       count: ''
     }
   }
 
   handleClick = () => {
-    debugger
-    import('./../images/1.png').then(res => {
+    import('./../images/1.png').then((res: any) => {
       console.log(res)
       this.setState({
         imgsrc: res.default
       })
     })
   }
-  render() {
-    // console.log(a)
-    const a: number = 3
+  render(): any {
     const { imgsrc } = this.state
-    return(
+    return (
       <div>
         <div className={styles.txt}>
-          {'index.html hengheng heng lllhhhhhhh hh'} { module() }
+          {'index.html hengheng heng lllhhhhhhh hh'} {module()}
           <button onClick={this.handleClick}>click</button>
           {/* <img src={img} /> */}
           {imgsrc && <img src={imgsrc} height={6200} />}
-        {/* <Search /> */}
+          {/* <Search /> */}
         </div>
       </div>
     )
   }
 }
 
-ReactDOM.render(
-  <App num={1} />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App num={1} />, document.getElementById('root'))

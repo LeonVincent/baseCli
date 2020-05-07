@@ -21,7 +21,7 @@ class App extends PureComponent<Props, State> {
   render() {
     return (
       <div>
-        {'Search Text'} { module() }
+        {'Search Text'} {module()}
         <div>
           {/* <img src={img} /> */}
         </div>
