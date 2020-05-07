@@ -21,6 +21,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],
+  // "parser": "babel-eslint",
   // "plugins": ["prettier"],
   settings: {
     "react": {
