@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/leon/.nvm/versions/node/v12.14.1/bin/node /usr/local/bin/yarn
+  /Users/leon/.nvm/versions/node/v12.14.1/bin/node /usr/local/bin/yarn add @typescript-eslint/eslint-plugin -D
 
 PATH: 
   /Users/leon/.nvm/versions/node/v12.14.1/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -7419,7 +7419,7 @@ Lockfile:
       yargs-parser "^13.1.0"
 
 Trace: 
-  Error: https://npm.ekuaibao.com/@typescript-eslint%2fexperimental-utils/-/experimental-utils-2.31.0.tgz: ETIMEDOUT
+  Error: https://npm.ekuaibao.com/@types%2feslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz: ETIMEDOUT
       at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:123749:19)
       at listOnTimeout (internal/timers.js:531:17)
       at processTimers (internal/timers.js:475:7)
