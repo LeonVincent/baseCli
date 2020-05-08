@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- <script src="./../../flexible.js"></script> -->
-  <script>
-    (function flexible (window, document) {
+(function flexible (window, document) {
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1
 
@@ -51,15 +42,3 @@
     docEl.removeChild(fakeBody)
   }
 }(window, document))
-
-  </script>
-  <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> -->
-</head>
-
-<body>
-  <div id="root1"><!--HTML_PLACEHOLDER--></div>
-  <!--INITIAL_DATA_PLACEHOLDER-->
-</body>
-
-</html>
