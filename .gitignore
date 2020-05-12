@@ -1,3 +1,4 @@
 /node_modules
 /dist
-/builder-webpack/node_modules
+/builder-webpack/lib
+/builder_webpack/node_modules

@@ -27,7 +27,7 @@ module.exports = {
       {
         test: /.(js|jsx)$/,
         use: [
-          'babel-loader',
+          'babel-loader'
           // 'eslint-loader'
         ]
       },
@@ -114,22 +114,20 @@ module.exports = {
         {
           module: 'react',
           entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-          global: 'React',
+          global: 'React'
         },
         {
           module: 'react-dom',
           entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-          global: 'ReactDOM',
-        },
+          global: 'ReactDOM'
+        }
       ]
-  }),
-
-
+    })
   ].concat(htmlWebPackPlugins),
   resolve: {
     modules: [path.resolve('node_modules')],
     extensions: ['.js', '.jsx', '.tsx', '.css', '.json', '.ts']
-  },
+  }
   // optimization: {
   //   splitChunks: {
   //     // minSize: 30000,
@@ -163,27 +161,3 @@ module.exports = {
   //   }
   // }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
