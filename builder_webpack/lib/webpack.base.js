@@ -3,12 +3,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const setMPA = require('./webpack.util.js')
-const { entry, htmlWebPackPlugins } = setMPA({})
+const projectRoot = process.cwd()
+const { entry, htmlWebPackPlugins } = setMPA({ projectRoot })
 module.exports = {
   entry: entry,
   output: {
     filename: '[name]:[hash:8].js',
-    path: path.resolve(__dirname, './../dist')
+    path: path.join(projectRoot, 'dist')
   },
   // mode: 'development',
   module: {

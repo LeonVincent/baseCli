@@ -1,10 +1,13 @@
 const glob = require('glob')
 const HtmlWebapckPlugin = require('html-webpack-plugin')
-const projectRoot = process.cwd()
 const path = require('path')
 
 const setMPA = (srcObj) => {
-  const { src1 = '/src/*/index.*', src2 = /src\/(.*)\/index\.*/ } = srcObj
+  const {
+    src1 = '/src/*/index.*',
+    src2 = /src\/(.*)\/index\.*/,
+    projectRoot
+  } = srcObj
   const entry = {}
   const htmlWebPackPlugins = []
   const entryFiles = glob.sync(path.join(projectRoot, src1))
